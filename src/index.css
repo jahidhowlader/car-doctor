@@ -1,0 +1,23 @@
+/* Import Google Font  */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.my-btn-outline {
+  @apply rounded px-3 lg:px-6 py-1 lg:py-3 text-root border font-semibold hover:bg-root hover:text-white;
+}
+
+.my-btn {
+  @apply bg-root rounded px-3 lg:px-6 py-1 lg:py-3 text-white border font-semibold hover:bg-transparent hover:text-root hover:border-root;
+}
+
+.form-submit-btn{
+  @apply bg-root hover:bg-transparent border text-white hover:text-root cursor-pointer py-3 rounded-lg w-full
+}
+
+
+body {
+  font-family: 'Inter', sans-serif;
+}
