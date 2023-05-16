@@ -12,7 +12,11 @@ const Bookings = () => {
     const URL = `http://localhost:5000/bookings?email=${user.email}`
     useEffect(() => {
 
-        fetch(URL)
+        fetch(URL, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('Access-Token')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
@@ -66,7 +70,7 @@ const Bookings = () => {
                     method: "DELETE",
                 })
                     .then(res => res.json())
-                    .then(data => {
+                    .then(() => {
 
                         const remaining = bookings.filter(booking => booking._id !== _id)
                         setBookings(remaining);
@@ -105,7 +109,7 @@ const Bookings = () => {
                     <tbody>
 
                         {
-                            bookings.map(booking => <BookingsRow
+                            bookings && bookings.map(booking => <BookingsRow
                                 key={booking._id}
                                 booking={booking}
                                 bookings={bookings}

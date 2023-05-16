@@ -1,6 +1,6 @@
 import {  useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 // import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-toastify";
 // import { updateProfile } from "firebase/auth";
@@ -14,7 +14,12 @@ const Signup = () => {
     const { createUser } = useContext(AuthContext)
  
     // Navigate Varriable
-    // const nevigate = useNavigate()
+    const nevigate = useNavigate()
+
+    // Set Location for navigate
+    const location = useLocation()
+    const from = location?.state?.from?.pathname || "/"
+    console.log(location);
 
     // All State Here
     const [error, setError] = useState('')
@@ -110,10 +115,6 @@ const Signup = () => {
         setShowConfirmPassword(!showConfirmPassword)
     }
 
-    // Set Location for Navigate
-    // const location = useLocation()
-    // const from = location?.state?.from?.pathname || '/'
-
     // Handler Form Submit
     const handlerSubmit = e => {
 
@@ -169,7 +170,7 @@ const Signup = () => {
                     setEmail('')
                     setPassword('')
                     setConfirmPassword('')
-                    // nevigate(from, { replace: true })
+                    nevigate(from, { replace: true })
                     toast.success('Successfully created Account', {
                         position: "top-right",
                         autoClose: 5000,

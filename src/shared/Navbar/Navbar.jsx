@@ -13,6 +13,9 @@ const Navbar = () => {
     const HandlerSignout = () => {
         logout()
             .then(() => {
+                
+                localStorage.removeItem('Access-Token')
+
                 toast.success('Signout Successfully', {
                     position: "top-right",
                     autoClose: 5000,
